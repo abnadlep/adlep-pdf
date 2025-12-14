@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>روائع الفانتازيا - أكبر مكتبة روايات عربية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff4d94;
+            --dark: #2d2d3a;
+            --light: #f8f9fa;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --radius: 12px;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: var(--dark);
+            direction: rtl;
+        }
+
+        /* رأس الصفحة */
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* التنقل */
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-links a i {
+            font-size: 1.2rem;
+        }
+
+        /* زر المستخدم */
+        .user-menu {
+            position: relative;
+        }
+
+        .user-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .user-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 250px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 15px;
+            display: none;
+            z-index: 1001;
+        }
+
+        .user-dropdown.active {
+            display: block;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .user-name {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .user-email {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .dropdown-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .dropdown-links a:hover {
+            background: #f5f5f5;
+        }
+
+        .dropdown-links a i {
+            color: var(--primary);
+        }
+
+        .logout-btn {
+            color: var(--danger) !important;
+        }
+
+        /* المحتوى الرئيسي */
+        .main-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* قسم البطل */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 40px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1.1rem;
+        }
+
+        .search-box button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 30px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .search-box button:hover {
+            background: #ff3d87;
+        }
+
+        /* قسم الروايات */
+        .section-title {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: var(--accent);
+        }
+
+        .novels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .novel-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .novel-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .novel-cover {
+            height: 200px;
+            background: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .novel-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .novel-card:hover .novel-cover img {
+            transform: scale(1.05);
+        }
+
+        .novel-info {
+            padding: 20px;
+        }
+
+        .novel-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .novel-author {
+            color: #666;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .novel-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .novel-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a0db5;
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #1c68fa;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            background: #ff3d87;
+        }
+
+        /* الأقسام */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .category-btn {
+            padding: 12px 25px;
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* المميزات */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* التذييل */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-right: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* تحسينات للجوال */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .novels-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 20px;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .novels-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .novels-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .novel-actions {
+                flex-direction: column;
+            }
+        }
+
+        /* رسائل التنبيه */
+        .alert {
+            padding: 15px 20px;
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* نمط الإدارة المخفي */
+        .admin-link {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--dark);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            opacity: 0.3;
+            transition: var(--transition);
+        }
+
+        .admin-link:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* لوحة التحميل */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- لوحة التحميل -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <p>جاري التحميل...</p>
+    </div>
+
+    <!-- رابط الإدارة المخفي -->
+    <a href="admin.html" class="admin-link" title="لوحة الإدارة">
+        <i class="fas fa-user-shield"></i>
+    </a>
+
+    <!-- رأس الصفحة -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-dragon"></i>
+                <div class="logo-text">
+                    <h1>روائع الفانتازيا</h1>
+                    <p>أكبر مكتبة روايات عربية</p>
+                </div>
+            </a>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="#"><i class="fas fa-book"></i> المكتبة</a></li>
+                    <li><a href="#"><i class="fas fa-search"></i> البحث</a></li>
+                    <li><a href="#"><i class="fas fa-robot"></i> الذكاء الاصطناعي</a></li>
+                    <li><a href="#"><i class="fas fa-headphones"></i> القراءة الصوتية</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-menu">
+                <button class="user-btn" id="userBtn">
+                    <i class="fas fa-user"></i>
+                    <span id="userName">تسجيل الدخول</span>
+                </button>
+                <div class="user-dropdown" id="userDropdown">
+                    <div class="user-info" id="userInfo">
+                        <img src="https://i.pravatar.cc/150?img=0" alt="صورة المستخدم" class="user-avatar" id="userAvatar">
+                        <div>
+                            <div class="user-name" id="dropdownUserName">زائر</div>
+                            <div class="user-email" id="dropdownUserEmail">قم بتسجيل الدخول</div>
+                        </div>
+                    </div>
+                    <div class="dropdown-links">
+                        <a href="#" id="profileLink"><i class="fas fa-user-circle"></i> الملف الشخصي</a>
+                        <a href="#" id="libraryLink"><i class="fas fa-bookmark"></i> مكتبتي</a>
+                        <a href="#" id="settingsLink"><i class="fas fa-cog"></i> الإعدادات</a>
+                        <a href="#" class="logout-btn" id="logoutLink"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+                        <a href="login.html" id="loginLink"><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- رسائل التنبيه -->
+    <div class="alert alert-success" id="successAlert"></div>
+    <div class="alert alert-error" id="errorAlert"></div>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-container">
+        <!-- قسم البطل -->
+        <section class="hero">
+            <h2>أرحب بكم في عالم الفانتازيا السحري</h2>
+            <p>استكشف آلاف الروايات والقصص الفانتازية من أفضل الكتاب العرب، حمل واقرأ واستمع إلى رواياتك المفضلة</p>
+            <div class="search-box">
+                <input type="text" placeholder="ابحث عن رواية، كاتب، أو نوع...">
+                <button><i class="fas fa-search"></i> بحث</button>
+            </div>
+        </section>
+
+        <!-- الأقسام -->
+        <section>
+            <h2 class="section-title"><i class="fas fa-tags"></i> تصفح حسب النوع</h2>
+            <div class="categories" id="categories">
+                <!-- سيتم ملؤها بالجافاسكريبت -->
+            </div>
+        </section>
+
+        <!-- الروايات المميزة -->
+        <section>
+            <h2 class="section-title"><i class="fas fa-crown"></i> الروايات المميزة</h2>
+            <div class="novels-grid" id="featuredNovels">
+                <!-- سيتم ملؤها بالجافاسكريبت -->
+            </div>
+        </section>
+
+        <!-- جميع الروايات -->
+        <section>
+            <h2 class="section-title"><i class="fas fa-book-open"></i> أحدث الروايات</h2>
+            <div class="novels-grid" id="allNovels">
+                <!-- سيتم ملؤها بالجافاسكريبت -->
+            </div>
+        </section>
+
+        <!-- المميزات -->
+        <section>
+            <h2 class="section-title"><i class="fas fa-star"></i> مميزات التطبيق</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>تنزيل غير محدود</h3>
+                    <p>حمل آلاف الروايات بصيغة PDF بدون حدود</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>ذكاء اصطناعي</h3>
+                    <p>اكتب رواياتك الخاصة بمساعدة الذكاء الاصطناعي</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>قراءة صوتية</h3>
+                    <p>استمع للروايات بصوت ذكاء اصطناعي طبيعي</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>متعدد المنصات</h3>
+                    <p>استخدم التطبيق على جميع أجهزتك</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- التذييل -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>روائع الفانتازيا</h3>
+                <p>أكبر مكتبة روايات فانتازيا عربية، نقدم لكم أفضل التجارب القرائية والسمعية.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#">المكتبة</a></li>
+                    <li><a href="#">الذكاء الاصطناعي</a></li>
+                    <li><a href="#">القراءة الصوتية</a></li>
+                    <li><a href="#">تواصل معنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>المساعدة</h3>
+                <ul class="footer-links">
+                    <li><a href="#">الأسئلة الشائعة</a></li>
+                    <li><a href="#">الدعم الفني</a></li>
+                    <li><a href="#">الشروط والأحكام</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                    <li><a href="#">عن التطبيق</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>اتصل بنا</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> info@fantasy-novels.com</li>
+                    <li><i class="fas fa-phone"></i> +966 123 456 789</li>
+                    <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2023 روائع الفانتازيا. جميع الحقوق محفوظة.</p>
+            <p>تم التطوير بحب لجميع عشاق الفانتازيا</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script>
+        // تعريف المتغيرات العامة
+        const API_URL = 'http://localhost:3000/api';
+        let currentUser = null;
+        let novels = [];
+        let categories = [];
+
+        // عناصر DOM
+        const userBtn = document.getElementById('userBtn');
+        const userDropdown = document.getElementById('userDropdown');
+        const userName = document.getElementById('userName');
+        const userInfo = document.getElementById('userInfo');
+        const userAvatar = document.getElementById('userAvatar');
+        const dropdownUserName = document.getElementById('dropdownUserName');
+        const dropdownUserEmail = document.getElementById('dropdownUserEmail');
+        const profileLink = document.getElementById('profileLink');
+        const loginLink = document.getElementById('loginLink');
+        const logoutLink = document.getElementById('logoutLink');
+        const featuredNovels = document.getElementById('featuredNovels');
+        const allNovels = document.getElementById('allNovels');
+        const categoriesContainer = document.getElementById('categories');
+        const successAlert = document.getElementById('successAlert');
+        const errorAlert = document.getElementById('errorAlert');
+        const loading = document.getElementById('loading');
+
+        // وظائف المساعدة
+        function showLoading() {
+            loading.style.display = 'flex';
+        }
+
+        function hideLoading() {
+            loading.style.display = 'none';
+        }
+
+        function showAlert(element, message, duration = 3000) {
+            element.textContent = message;
+            element.style.display = 'block';
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, duration);
+        }
+
+        // التحقق من حالة تسجيل الدخول
+        function checkAuth() {
+            const token = localStorage.getItem('token');
+            if (token) {
+                // التحقق من صحة التوكن
+                fetch(`${API_URL}/user`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                .then(res => {
+                    if (res.ok) {
+                        return res.json();
+                    } else {
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('user');
+                        return null;
+                    }
+                })
+                .then(user => {
+                    if (user) {
+                        currentUser = user;
+                        updateUserUI(user);
+                    }
+                })
+                .catch(() => {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                });
+            }
+        }
+
+        // تحديث واجهة المستخدم
+        function updateUserUI(user) {
+            if (user) {
+                userName.textContent = user.name;
+                dropdownUserName.textContent = user.name;
+                dropdownUserEmail.textContent = user.email;
+                userAvatar.src = user.avatar || 'https://i.pravatar.cc/150?img=0';
+                
+                // إظهار/إخفاء الروابط
+                loginLink.style.display = 'none';
+                logoutLink.style.display = 'block';
+                profileLink.style.display = 'block';
+            } else {
+                userName.textContent = 'تسجيل الدخول';
+                dropdownUserName.textContent = 'زائر';
+                dropdownUserEmail.textContent = 'قم بتسجيل الدخول';
+                
+                // إظهار/إخفاء الروابط
+                loginLink.style.display = 'block';
+                logoutLink.style.display = 'none';
+                profileLink.style.display = 'none';
+            }
+        }
+
+        // تسجيل الخروج
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            currentUser = null;
+            updateUserUI(null);
+            showAlert(successAlert, 'تم تسجيل الخروج بنجاح');
+            userDropdown.classList.remove('active');
+        }
+
+        // تحميل الروايات
+        function loadNovels() {
+            showLoading();
+            fetch(`${API_URL}/novels`)
+                .then(res => res.json())
+                .then(data => {
+                    novels = data;
+                    renderNovels();
+                    hideLoading();
+                })
+                .catch(err => {
+                    console.error('Error loading novels:', err);
+                    hideLoading();
+                    showAlert(errorAlert, 'حدث خطأ في تحميل الروايات');
+                });
+        }
+
+        // تحميل الأقسام
+        function loadCategories() {
+            fetch(`${API_URL}/categories`)
+                .then(res => res.json())
+                .then(data => {
+                    categories = data;
+                    renderCategories();
+                })
+                .catch(err => {
+                    console.error('Error loading categories:', err);
+                });
+        }
+
+        // عرض الروايات
+        function renderNovels() {
+            // الروايات المميزة
+            const featured = novels.filter(novel => novel.isFeatured);
+            featuredNovels.innerHTML = featured.map(novel => `
+                <div class="novel-card" data-id="${novel.id}">
+                    <div class="novel-cover">
+                        <img src="${novel.coverImage}" alt="${novel.title}">
+                    </div>
+                    <div class="novel-info">
+                        <h3 class="novel-title">${novel.title}</h3>
+                        <div class="novel-author">
+                            <i class="fas fa-user-pen"></i>
+                            ${novel.author}
+                        </div>
+                        <div class="novel-meta">
+                            <span><i class="fas fa-book"></i> ${novel.pages} صفحة</span>
+                            <span><i class="fas fa-star"></i> ${novel.rating}</span>
+                        </div>
+                        <div class="novel-actions">
+                            <button class="btn btn-primary read-btn">
+                                <i class="fas fa-book-open"></i> قراءة
+                            </button>
+                            <button class="btn btn-secondary download-btn">
+                                <i class="fas fa-download"></i> تحميل
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // جميع الروايات
+            allNovels.innerHTML = novels.map(novel => `
+                <div class="novel-card" data-id="${novel.id}">
+                    <div class="novel-cover">
+                        <img src="${novel.coverImage}" alt="${novel.title}">
+                    </div>
+                    <div class="novel-info">
+                        <h3 class="novel-title">${novel.title}</h3>
+                        <div class="novel-author">
+                            <i class="fas fa-user-pen"></i>
+                            ${novel.author}
+                        </div>
+                        <div class="novel-meta">
+                            <span><i class="fas fa-tag"></i> ${novel.genre}</span>
+                            <span><i class="fas fa-download"></i> ${novel.downloads}</span>
+                        </div>
+                        <div class="novel-actions">
+                            <button class="btn btn-primary read-btn">
+                                <i class="fas fa-book-open"></i> قراءة
+                            </button>
+                            <button class="btn btn-accent audio-btn">
+                                <i class="fas fa-headphones"></i> صوت
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // إضافة أحداث للرواية
+            document.querySelectorAll('.novel-card').forEach(card => {
+                const id = card.dataset.id;
+                const novel = novels.find(n => n.id == id);
+                
+                card.querySelector('.read-btn').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    alert(`جاري فتح رواية: ${novel.title}`);
+                });
+                
+                card.querySelector('.download-btn')?.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (currentUser) {
+                        alert(`جاري تحميل رواية: ${novel.title}`);
+                    } else {
+                        showAlert(errorAlert, 'يجب تسجيل الدخول لتحميل الروايات');
+                    }
+                });
+                
+                card.querySelector('.audio-btn')?.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    alert(`جاري تشغيل النسخة الصوتية لرواية: ${novel.title}`);
+                });
+                
+                card.addEventListener('click', () => {
+                    // انتقل إلى صفحة تفاصيل الرواية
+                    alert(`تفاصيل رواية: ${novel.title}\n\n${novel.description}`);
+                });
+            });
+        }
+
+        // عرض الأقسام
+        function renderCategories() {
+            categoriesContainer.innerHTML = categories.map(category => `
+                <button class="category-btn" data-id="${category.id}">
+                    ${category.name} (${category.count})
+                </button>
+            `).join('');
+
+            // إضافة أحداث للأقسام
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const categoryId = btn.dataset.id;
+                    const category = categories.find(c => c.id == categoryId);
+                    showAlert(successAlert, `تم عرض روايات قسم: ${category.name}`);
+                });
+            });
+        }
+
+        // أحداث DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            // التحقق من حالة تسجيل الدخول
+            checkAuth();
+            
+            // تحميل البيانات
+            loadNovels();
+            loadCategories();
+            
+            // أحداث زر المستخدم
+            userBtn.addEventListener('click', () => {
+                userDropdown.classList.toggle('active');
+            });
+
+            // إغلاق القائمة عند النقر خارجها
+            document.addEventListener('click', (e) => {
+                if (!userBtn.contains(e.target) && !userDropdown.contains(e.target)) {
+                    userDropdown.classList.remove('active');
+                }
+            });
+
+            // حدث تسجيل الخروج
+            logoutLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                logout();
+            });
+
+            // حدث الملف الشخصي
+            profileLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentUser) {
+                    alert(`الملف الشخصي لـ ${currentUser.name}`);
+                }
+            });
+
+            // حدث تسجيل الدخول
+            loginLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location.href = 'login.html';
+            });
+        });
+
+        // وظائف API
+        window.api = {
+            login: async (email, password) => {
+                const response = await fetch(`${API_URL}/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                return response.json();
+            },
+            
+            register: async (name, email, password) => {
+                const response = await fetch(`${API_URL}/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, email, password })
+                });
+                return response.json();
+            },
+            
+            getUser: async () => {
+                const token = localStorage.getItem('token');
+                if (!token) return null;
+                
+                const response = await fetch(`${API_URL}/user`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                return response.json();
+            },
+            
+            getNovels: async () => {
+                const response = await fetch(`${API_URL}/novels`);
+                return response.json();
+            },
+            
+            getCategories: async () => {
+                const response = await fetch(`${API_URL}/categories`);
+                return response.json();
+            }
+        };
+    </script>
+</body>
+  </html>
